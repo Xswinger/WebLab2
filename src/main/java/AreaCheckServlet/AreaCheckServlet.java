@@ -1,35 +1,41 @@
 package AreaCheckServlet;
 
-import ControllerServet.Area;
+import dto.Area;
+import dto.HitChecker;
+import dto.RequestData;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.pow;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+@WebServlet(name = "AreaCheckServlet", value = "/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
-    private int x;
-    private float y;
-    private float r;
 
-    public AreaCheckServlet(Area area) {
-        this.x = area.getX();
-        this.y = area.getY();
-        this.r = area.getR();
-    }
-
-    public AreaCheckServlet() {
-    }
-
-    public boolean checkSecondQuarterHit() {
-        return (r / 2) <= x && x <= 0 && r >= y && y >= 0;
-    }
-
-    public boolean checkThirdQuarterHit() {
-        return (x <= 0 && y <= 0) && (pow(x, 2) + pow(y, 2) < r);
-    }
-
-    public boolean checkFourthQuarterHit() {
-        return x >= 0 && y <= 0 && abs(x) * abs(y) <= r && x <= -r;
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Area.getInstance().setValues(Float.parseFloat(req.getParameter("x_coordinate")),
+                Float.parseFloat(req.getParameter("y_coordinate")),
+                Float.parseFloat(req.getParameter("r_coordinate")));
+        RequestData requestData = new RequestData();
+        requestData.setPrimaryData(Area.getInstance());
+        requestData.setResult(HitChecker.getInstance().checkValues(Area.getInstance()));
+        requestData.setProcessedData(req.getParameter("time"));
+        HttpSession session = req.getSession();
+        if (session.getAttribute("hitTable") == null) {
+            session.setAttribute("hitTable", new ArrayList<RequestData>());
+        }
+        List<RequestData> table = (List<RequestData>) session.getAttribute("hitTable");
+        table.add(requestData);
+        session.setAttribute("hitTable", table);
+        resp.setContentType("text/html");
+        System.out.println("success");
+        req.getRequestDispatcher("/result.jsp").forward(req, resp);
     }
 }

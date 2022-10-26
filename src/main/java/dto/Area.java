@@ -1,9 +1,9 @@
-package ControllerServet;
+package dto;
 
 public class Area {
-    private int x;
-    private float y;
-    private float r;
+    private Float x;
+    private Float y;
+    private Float r;
     private static Area instance = null;
 
     public static Area getInstance() {
@@ -13,36 +13,36 @@ public class Area {
         return instance;
     }
 
-    private Area() {
+    public Area() {
     }
 
-    public Area(int x, float y, float r) {
+    public void setValues(Float x, Float y, Float r) {
+        setX(x);
+        setY(y);
+        setR(r);
+    }
+
+    public void setX(Float x) {
         this.x = x;
+    }
+
+    public void setY(Float y) {
         this.y = y;
+    }
+
+    public void setR(Float r) {
         this.r = r;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(float y) {
-        this.y = y;
-    }
-
-    public void setR(float r) {
-        this.r = r;
-    }
-
-    public int getX() {
+    public Float getX() {
         return x;
     }
 
-    public float getY() {
+    public Float getY() {
         return y;
     }
 
-    public float getR() {
+    public Float getR() {
         return r;
     }
 }

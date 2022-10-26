@@ -3,8 +3,8 @@ function checkInputValues(xValues, yValue, rValues) {
 
     function checkX() {
         for (let i = 0; i < xValues.length; i++) {
-            if (xValues[i].checked) {
-                xValue = xValues[i];
+            if (xValues[i].disabled) {
+                xValue = xValues[i].value;
                 return true;
             }
         }
@@ -14,7 +14,7 @@ function checkInputValues(xValues, yValue, rValues) {
 
     function checkY() {
         if (yValue.value.trim()) {
-            if (Number(yValue.value.trim()) > -5 && Number(yValue.value.trim()) < 3) {
+            if (Number(yValue.value.trim()) > -3 && Number(yValue.value.trim()) < 3) {
                 return true;
             } else {
                 invalidY();
@@ -28,8 +28,8 @@ function checkInputValues(xValues, yValue, rValues) {
 
     function checkR() {
         for(let i=0; i < rValues.length; i++) {
-            if (rValues[i].checked) {
-                rValue = rValues[i];
+            if (rValues[i].disabled) {
+                rValue = rValues[i].value;
                 return true;
             }
         }
@@ -37,7 +37,7 @@ function checkInputValues(xValues, yValue, rValues) {
         return false;
     }
 
-    let checkValidation = checkX() && checkY() && checkR();
+    let checkValidation = checkX() &&  checkY() && checkR();
 
     infoBox.innerHTML = infoValidation;
 

@@ -1,19 +1,23 @@
 let xValues = document.querySelectorAll('.x');
 let yValues = document.querySelector('.y');
 let rValues = document.querySelectorAll('.r');
+let canvas = document.getElementById("canvas");
+let selectedRValue = 1;
 let xValue;
 let yValue;
 let rValue;
 let infoBox = document.querySelector('.validation_message');
 let infoValidation = '';
 
-//Отправка запроса при загрузке DOM
-$(document).ready(function () {
-    $.post("php/load_table.php")
-        .done(function(data) {
-        $("#result_table>tbody").html(data);
-    })
+$(document).ready(function (){
+    drawCanvas(selectedRValue);
 })
+
+$(canvas).onclick = e => {
+    clearCanvas();
+    drawCanvas(selectedRValue);
+    putDot(e.offsetX, e.offsetY);
+}
 
 //Отправка запроса при нажатии кнопки
 $("#forms").on("submit", function (event) {
@@ -21,7 +25,7 @@ $("#forms").on("submit", function (event) {
     infoValidation = "";
     if (checkInputValues(xValues, yValues, rValues)) {
         yValue = Number(yValues.value.trim()).toFixed(2);
-        $.post("php/index.php", {x_coordinate: xValue.value, y_coordinate: yValue, r_coordinate: rValue.value, time: new Date().getTimezoneOffset()}).done(function (data) {
+        $.post("./controller", {x_coordinate: xValue, y_coordinate: yValue, r_coordinate: rValue, time: new Date().getTimezoneOffset()}).done(function (data) {
             $(".check_button").attr("disabled", false);
             $("#result_table>tbody").html(data);
         }).fail(function () {
