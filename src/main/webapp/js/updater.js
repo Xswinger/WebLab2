@@ -13,11 +13,15 @@ $(document).ready(function (){
     drawCanvas(selectedRValue);
 })
 
-$(canvas).onclick = e => {
-    clearCanvas();
-    drawCanvas(selectedRValue);
-    putDot(e.offsetX, e.offsetY);
-}
+canvas.addEventListener('click', ev => {
+    if (checkOnActiveR()) {
+        clearCanvas();
+        drawCanvas(selectedRValue);
+        putDot(ev.offsetX, ev.offsetY);
+    } else {
+        alert("Значение R не выбрано!")
+    }
+})
 
 //Отправка запроса при нажатии кнопки
 $("#forms").on("submit", function (event) {
@@ -27,7 +31,7 @@ $("#forms").on("submit", function (event) {
         yValue = Number(yValues.value.trim()).toFixed(2);
         $.post("./controller", {x_coordinate: xValue, y_coordinate: yValue, r_coordinate: rValue, time: new Date().getTimezoneOffset()}).done(function (data) {
             $(".check_button").attr("disabled", false);
-            $("#result_table>tbody").html(data);
+            window.location.replace("result.jsp");
         }).fail(function () {
             $(".check_button").attr("disabled", false);
         })

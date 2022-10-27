@@ -28,14 +28,13 @@ public class AreaCheckServlet extends HttpServlet {
         requestData.setResult(HitChecker.getInstance().checkValues(Area.getInstance()));
         requestData.setProcessedData(req.getParameter("time"));
         HttpSession session = req.getSession();
-        if (session.getAttribute("hitTable") == null) {
-            session.setAttribute("hitTable", new ArrayList<RequestData>());
+        if (session.getAttribute("table") == null) {
+            session.setAttribute("table", new ArrayList<RequestData>());
         }
-        List<RequestData> table = (List<RequestData>) session.getAttribute("hitTable");
+        List<RequestData> table = (List<RequestData>) session.getAttribute("table");
         table.add(requestData);
-        session.setAttribute("hitTable", table);
+        session.setAttribute("table", table);
         resp.setContentType("text/html");
-        System.out.println("success");
         req.getRequestDispatcher("/result.jsp").forward(req, resp);
     }
 }

@@ -1,12 +1,9 @@
 package dto;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.OffsetTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
-public class RequestData {
+public class RequestData implements Serializable {
     private Area area;
     private LocalDate currentTime;
     private double executionTime;

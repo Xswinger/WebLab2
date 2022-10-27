@@ -6,15 +6,15 @@ function drawCanvas(r) {
     context.fillStyle = "#004cff";
     context.strokeStyle = "#004cff";
     context.moveTo(150, 150);
-    context.lineTo(r * 200, 150);
-    context.lineTo(150, r * 100);
+    context.lineTo(200, 150);
+    context.lineTo(150, 100);
     context.fill();
     //Rect
-    context.rect(r * 50, r * 100, r * 100, r * 50);
+    context.rect(50, 100, 100, 50);
     context.fill();
     //Circle
     context.beginPath();
-    context.arc(150, 150, r * 100, 0.5 * Math.PI, Math.PI);
+    context.arc(150, 150, 100, 0.5 * Math.PI, Math.PI);
     context.lineTo(150, 150);
     context.fill();
     context.closePath();
@@ -62,11 +62,14 @@ function drawCanvas(r) {
 }
 
 function clearCanvas() {
-    context.clearRect(0, 0, 300, 500);
+    context.clearRect(0, 0, 300, 300);
 }
 
 function putDot(x, y) {
-    context.fillStyle = "#000000";
-    context.rect(x, y, 2, 2);
+    context.beginPath();
+    context.fillStyle = "#fd0000";
+    context.rect(x, y, 3, 3);
     context.fill();
+    context.closePath();
+    changeActiveButtonY(selectedRValue, y);
 }

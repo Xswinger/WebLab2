@@ -1,6 +1,8 @@
 package dto;
 
-public class Area {
+import java.io.Serializable;
+
+public class Area implements Serializable {
     private Float x;
     private Float y;
     private Float r;

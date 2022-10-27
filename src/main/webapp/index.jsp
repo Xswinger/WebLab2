@@ -17,7 +17,7 @@
     <div id="form_table" class="main_field">
         <h2 class="center">Система координат с областью</h2>
         <div class="">
-            <canvas class="schedule" id="canvas" width="300" height="500">
+            <canvas class="schedule" id="canvas" width="300" height="300">
             </canvas>
         </div>
     </div>

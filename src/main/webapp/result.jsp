@@ -1,6 +1,7 @@
+<%@ page import="dto.RequestData" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="resources/style.css">
 </head>
 <body>
+<%
+    List<RequestData> table = (List<RequestData>) session.getAttribute("table");
+%>
 <div id="header" class="main_field">
         <span id="header_text">
             Аллаяров Игорь, P32121, Вариант №1101
@@ -22,29 +26,24 @@
         <th>Значение X</th>
         <th>Значение Y</th>
         <th>Значение R</th>
+        <th>Время выполнения</th>
+        <th>Текущее время выполнения</th>
+        <th>Результат</th>
         </thead>
         <tbody>
-<%--            <c:set scope="session" var="row" value="RequestData"/>--%>
-<%--            <c:set var="area" value="row.area"/>--%>
-<%--            <c:set var="x" value="area.x"/>--%>
-<%--            <c:set var="y" value="area.y"/>--%>
-<%--            <c:set var="r" value="area.r"/>--%>
-<%--            <c:set var="currentTime" value="row.currentTime"/>--%>
-<%--            <c:set var="executionTime" value="row.executionTime"/>--%>
-<%--            <c:set var="result" value="row.result"/>--%>
-<%--            <c:forEach var="row" items="${hitTable}">--%>
-<%--                <tr class='columns'>--%>
-<%--                    <td><c:out value="${x}" /></td>--%>
-<%--                    <td><c:out value="${y}"/></td>--%>
-<%--                    <td><c:out value="${r}"/></td>--%>
-<%--                    <td><c:out value="${currentTime}"/></td>--%>
-<%--                    <td><c:out value="${executionTime}"/></td>--%>
-<%--                    <td><c:out value="${result}"/></td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
+        <% for(RequestData requestData: table) { %>
+            <tr class='columns'>
+                <td><%=requestData.getArea().getX()%></td>
+                <td><%=requestData.getArea().getY()%></td>
+                <td><%=requestData.getArea().getR()%></td>
+                <td><%=requestData.getExecutionTime()%></td>
+                <td><%=requestData.getCurrentTime()%></td>
+                <td><%=requestData.isResult()%></td>
+            </tr>
+        <% } %>
         </tbody>
     </table>
-    <form id="forms" class="center" action="http://localhost:8080/Weblab2/index.jsp">
+    <form id="forms" class="center" action="index.jsp">
         <button>Вернуться на главную страницу</button>
     </form>
 </div>

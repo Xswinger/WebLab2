@@ -23,3 +23,18 @@ function changeActiveCheckboxR(id) {
         }
     }
 }
+
+function checkOnActiveR() {
+    let buttons = document.querySelectorAll('.r');
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].disabled) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function changeActiveButtonY(r, y) {
+    document.querySelector('.y').value = Number(-(r * 0.01) * y + (r * 1.5)).toFixed(2);
+
+}
