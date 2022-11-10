@@ -8,7 +8,9 @@ function checkInputValues(xValues, yValue, rValues) {
                 return true;
             }
         }
-        invalidX();
+        if (Object.keys(xValue).length === 0) {
+            invalidX();
+        } else {return true;}
         return false;
     }
 

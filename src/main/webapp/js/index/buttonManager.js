@@ -18,7 +18,7 @@ function changeActiveCheckboxR(id) {
             buttons[i].disabled = false;
         } else {
             document.getElementById(id).disabled = true;
-            clearCanvas();
+
             drawCanvas(document.getElementById(id).value);
             selectedRValue = document.getElementById(id).value;
         }

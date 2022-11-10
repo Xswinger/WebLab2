@@ -17,7 +17,6 @@ $(document).ready(function (){
 
 canvas.addEventListener('click', ev => {
     if (checkOnActiveR()) {
-        drawCanvas(selectedRValue);
         coordinateX = ev.offsetX;
         coordinateY = ev.offsetY;
         putDot(coordinateX, coordinateY);
