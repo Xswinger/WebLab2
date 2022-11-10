@@ -72,4 +72,6 @@ function putDot(x, y) {
     context.fill();
     context.closePath();
     changeActiveButtonY(selectedRValue, y);
+    changeActiveButtonX(selectedRValue, x);
+    document.getElementById("forms").submit();
 }
