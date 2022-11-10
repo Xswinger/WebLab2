@@ -57,10 +57,10 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="js/updater.js"></script>
-<script src="js/drawCanvas.js"></script>
-<script src="js/checker.js"></script>
-<script src="js/setterMessage.js"></script>
-<script src="js/buttonManager.js"></script>
+<script src="js/index/updater.js"></script>
+<script src="js/index/drawCanvas.js"></script>
+<script src="js/index/checker.js"></script>
+<script src="js/index/setterMessage.js"></script>
+<script src="js/index/buttonManager.js"></script>
 </body>
 </html>

@@ -12,7 +12,10 @@ public class ValuesValidator {
     }
 
     private static boolean validateX(String x) {
-        return x != null && Arrays.asList("-2", "-1.5", "-1", "-0.5", "0", "0.5", "1", "1.5", "2").contains(x);
+        return x != null &&
+                (Arrays.asList("-2", "-1.5", "-1", "-0.5", "0", "0.5", "1", "1.5", "2").contains(x)
+                        || checkOnNumber.matcher(x).matches()
+                        && (Float.parseFloat(x) >= -2 && Float.parseFloat(x) <= 2));
     }
 
     private static boolean validateY(String y) {

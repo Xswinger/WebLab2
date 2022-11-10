@@ -1,10 +1,11 @@
 let context = canvas.getContext("2d");
 
-function drawCanvas(r) {
+function drawCanvas() {
     //Triangle
     context.beginPath();
     context.fillStyle = "#004cff";
     context.strokeStyle = "#004cff";
+    context.font = '20px serif';
     context.moveTo(150, 150);
     context.lineTo(200, 150);
     context.lineTo(150, 100);
@@ -57,12 +58,28 @@ function drawCanvas(r) {
     context.lineTo(285, 145);
     context.lineTo(285, 155);
     context.closePath();
+    context.fillText('R', 45, 180);
+    context.fillText('R/2', 95, 180);
+    context.fillText('R/2', 195, 180);
+    context.fillText('R', 245, 180);
+    context.fillText('R', 170, 55);
+    context.fillText('R/2', 170, 105);
+    context.fillText('R/2', 170, 205);
+    context.fillText('R', 170, 255);
     context.fill();
     context.stroke();
 }
 
 function clearCanvas() {
     context.clearRect(0, 0, 300, 300);
+}
+
+function drawPuttedDot(x, y) {
+    context.beginPath();
+    context.fillStyle = "#fd0000";
+    context.rect(x, y, 3, 3);
+    context.fill();
+    context.closePath();
 }
 
 function putDot(x, y) {
@@ -73,5 +90,5 @@ function putDot(x, y) {
     context.closePath();
     changeActiveButtonY(selectedRValue, y);
     changeActiveButtonX(selectedRValue, x);
-    document.getElementById("forms").submit();
+    $('#forms').submit();
 }

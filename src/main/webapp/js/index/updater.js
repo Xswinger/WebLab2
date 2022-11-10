@@ -2,6 +2,8 @@ let xValues = document.querySelectorAll('.x');
 let yValues = document.querySelector('.y');
 let rValues = document.querySelectorAll('.r');
 let canvas = document.getElementById("canvas");
+let coordinateX;
+let coordinateY;
 let selectedRValue = 1;
 let xValue;
 let yValue;
@@ -10,14 +12,15 @@ let infoBox = document.querySelector('.validation_message');
 let infoValidation = '';
 
 $(document).ready(function (){
-    drawCanvas(selectedRValue);
+    drawCanvas();
 })
 
 canvas.addEventListener('click', ev => {
     if (checkOnActiveR()) {
-        clearCanvas();
         drawCanvas(selectedRValue);
-        putDot(ev.offsetX, ev.offsetY);
+        coordinateX = ev.offsetX;
+        coordinateY = ev.offsetY;
+        putDot(coordinateX, coordinateY);
     } else {
         alert("Значение R не выбрано!")
     }

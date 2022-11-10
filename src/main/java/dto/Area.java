@@ -6,14 +6,6 @@ public class Area implements Serializable {
     private Float x;
     private Float y;
     private Float r;
-    private static Area instance = null;
-
-    public static Area getInstance() {
-        if (instance == null) {
-            instance = new Area();
-        }
-        return instance;
-    }
 
     public Area() {
     }

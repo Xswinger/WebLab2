@@ -21,12 +21,13 @@ public class AreaCheckServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         long startTime = System.nanoTime();
-        Area.getInstance().setValues(Float.parseFloat(req.getParameter("x_coordinate")),
+        Area area = new Area();
+        area.setValues(Float.parseFloat(req.getParameter("x_coordinate")),
                 Float.parseFloat(req.getParameter("y_coordinate")),
                 Float.parseFloat(req.getParameter("r_coordinate")));
         RequestData requestData = new RequestData();
-        requestData.setPrimaryData(Area.getInstance());
-        requestData.setResult(HitChecker.getInstance().checkValues(Area.getInstance()));
+        requestData.setPrimaryData(area);
+        requestData.setResult(HitChecker.getInstance().checkValues(area));
         requestData.setProcessedData(req.getParameter("time"), startTime);
         HttpSession session = req.getSession();
         if (session.getAttribute("table") == null) {

@@ -1,6 +1,6 @@
 //Функции установки сообщения об ошибке ввода
 function invalidX() {
-    infoValidation += "<span>Не выбрано значение X</span><br>"
+    infoValidation += "<span>Не выбрано или неверно задано значение X</span><br>"
 }
 
 function invalidY() {
@@ -12,5 +12,5 @@ function notSetY() {
 }
 
 function invalidR() {
-    infoValidation += "<span>Не выбрано значение R</span><br>"
+    infoValidation += "<span>Не выбрано или неверно задано значение R</span><br>"
 }

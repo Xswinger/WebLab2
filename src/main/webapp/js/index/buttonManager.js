@@ -30,38 +30,38 @@ function changeActiveButtonY(r, y) {
 }
 
 function changeActiveButtonX(r, x) {
-    let value = (r * 0.01) * x - (r * 1.5);
-    let valueWithLowerStep = (Math.round(value * 2) / 2).toFixed(1);
-    switch (valueWithLowerStep) {
-        case "-2.0":
-            changeActiveCheckboxX("x_value_-2");
-            break;
-        case "-1.5":
-            changeActiveCheckboxX("x_value_-1.5");
-            break;
-        case "-1.0":
-            changeActiveCheckboxX("x_value_-1");
-            break;
-        case "-0.5":
-            changeActiveCheckboxX("x_value_-0.5");
-            break;
-        case "-0":
-            changeActiveCheckboxX("x_value_-0");
-            break;
-        case "0.5":
-            changeActiveCheckboxX("x_value_0.5");
-            break;
-        case "1.0":
-            changeActiveCheckboxX("x_value_1");
-            break;
-        case "1.5":
-            changeActiveCheckboxX("x_value_1.5");
-            break;
-        case "2.0":
-            changeActiveCheckboxX("x_value_2");
-            break;
-    }
-
+    // let value = (r * 0.01) * x - (r * 1.5);
+    // let valueWithLowerStep = (Math.round(value * 2) / 2).toFixed(1);
+    // switch (valueWithLowerStep) {
+    //     case "-2.0":
+    //         changeActiveCheckboxX("x_value_-2");
+    //         break;
+    //     case "-1.5":
+    //         changeActiveCheckboxX("x_value_-1.5");
+    //         break;
+    //     case "-1.0":
+    //         changeActiveCheckboxX("x_value_-1");
+    //         break;
+    //     case "-0.5":
+    //         changeActiveCheckboxX("x_value_-0.5");
+    //         break;
+    //     case "-0":
+    //         changeActiveCheckboxX("x_value_-0");
+    //         break;
+    //     case "0.5":
+    //         changeActiveCheckboxX("x_value_0.5");
+    //         break;
+    //     case "1.0":
+    //         changeActiveCheckboxX("x_value_1");
+    //         break;
+    //     case "1.5":
+    //         changeActiveCheckboxX("x_value_1.5");
+    //         break;
+    //     case "2.0":
+    //         changeActiveCheckboxX("x_value_2");
+    //         break;
+    // }
+    xValue = Number(-(r * 0.01) * x + (r * 1.5)).toFixed(2);
 }
 
 function checkOnActiveR() {
