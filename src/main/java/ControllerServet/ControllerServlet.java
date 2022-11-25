@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.concurrent.locks.ReentrantLock;
 
 @WebServlet(name = "Controller Servlet", value = "/controller")
 public class ControllerServlet extends HttpServlet {
+
+    private final ReentrantLock reentrantLock = new ReentrantLock();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -23,10 +26,6 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletContext context = getServletContext();
-        Enumeration<String> headers = req.getHeaderNames();
-        HeadersManager.getInstance().addHeadersOfNewRequest(headers);
-        context.setAttribute("headersMap", HeadersManager.getInstance().getHeadersMap());
         if (ValuesValidator.validInputValues(req.getParameter("x_coordinate"),
                 req.getParameter("y_coordinate"),
                 req.getParameter("r_coordinate"))) {

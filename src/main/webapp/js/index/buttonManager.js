@@ -61,7 +61,7 @@ function changeActiveButtonX(r, x) {
     //         changeActiveCheckboxX("x_value_2");
     //         break;
     // }
-    xValue = Number(-(r * 0.01) * x + (r * 1.5)).toFixed(2);
+    xValue = Number((r * 0.01) * x - (r * 1.5)).toFixed(2);
 }
 
 function checkOnActiveR() {

@@ -24,6 +24,6 @@ public class HitChecker {
     }
 
     private static boolean checkThirdQuarterHit(Area area) {
-        return (area.getX() <= 0 && area.getY() <= 0 && (pow(area.getX(), 2) + pow(area.getY(), 2) == area.getR()));
+        return (area.getX() <= 0 && area.getY() <= 0 && (pow(area.getX(), 2) + pow(area.getY(), 2) <= area.getR()));
     }
 }

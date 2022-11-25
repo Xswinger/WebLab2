@@ -2,6 +2,7 @@ let xValues = document.querySelectorAll('.x');
 let yValues = document.querySelector('.y');
 let rValues = document.querySelectorAll('.r');
 let canvas = document.getElementById("canvas");
+let dots = new Map();
 let coordinateX;
 let coordinateY;
 let selectedRValue = 1;
@@ -13,6 +14,9 @@ let infoValidation = '';
 
 $(document).ready(function (){
     drawCanvas();
+    for (let pairs of dots.entries()) {
+        putDot(pairs[0], pairs[1]);
+    }
 })
 
 canvas.addEventListener('click', ev => {
@@ -33,6 +37,8 @@ $("#forms").on("submit", function (event) {
         yValue = Number(yValues.value.trim()).toFixed(2);
         $.post("./controller", {x_coordinate: xValue, y_coordinate: yValue, r_coordinate: rValue, time: new Date().getTimezoneOffset()}).done(function (data) {
             $(".check_button").attr("disabled", false);
+            dots.set(coordinateX, coordinateY);
+            JSON.stringify(Object.fromEntries(dots));
             window.location.replace("result.jsp");
         }).fail(function () {
             $(".check_button").attr("disabled", false);

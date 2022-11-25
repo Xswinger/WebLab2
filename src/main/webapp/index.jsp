@@ -58,6 +58,7 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="js/index/updater.js"></script>
+<script src="js/result/dot.js"></script>
 <script src="js/index/drawCanvas.js"></script>
 <script src="js/index/checker.js"></script>
 <script src="js/index/setterMessage.js"></script>

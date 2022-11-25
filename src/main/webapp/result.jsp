@@ -1,5 +1,6 @@
 <%@ page import="dto.RequestData" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -47,5 +48,6 @@
         <button>Вернуться на главную страницу</button>
     </form>
 </div>
+<script src="js/result/dot.js"></script>
 </body>
 </html>
